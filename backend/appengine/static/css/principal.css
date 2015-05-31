@@ -1,0 +1,179 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-size: 100%;
+    font-family: Roboto, Arial, Tahoma, Sans-serif;
+}
+
+img {
+    max-width: 100%;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+section {
+    padding: 100px 0;
+}
+
+section:after,
+section:before {
+    content: "";
+    display: block;
+    clear: both;
+}
+
+/**** HEADER ****/
+header {
+    position: fixed;
+    top: 20px;
+    width: 100%;
+    text-align: center;
+    background-color: #000; /* Progressive Enhancement */
+    background-color: rgba(0, 0, 0, 0.85);
+    padding: 30px 0;
+}
+
+header li {
+    display: inline-block;
+}
+
+header a {
+    display: inline-block;
+    padding: 0 20px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+    font-weight: 300;
+    font-size: .88rem;
+    letter-spacing: 3px;
+}
+
+.highlight {
+    box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.2); /* CSS 3 :) */
+    padding: 190px 0 150px;
+    background: url(img/highlight.jpg) fixed no-repeat center -50px;
+    background-size: cover;
+    text-align: center;
+    color: #000;
+}
+
+.highlight h1 {
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 3.13rem;
+}
+
+.highlight p {
+    width: 900px;
+    margin: auto;
+    padding: 50px 0;
+    font-weight: 100;
+    font-size: 1.88rem;
+}
+
+.highlight .btn {font-size: 1.25rem;}
+
+/**** GAMES ****/
+.game {
+    display: inline-block;
+    vertical-align: top;
+    width: 33%;
+    padding: 20px;
+    margin-bottom: 50px;
+}
+
+.game h3 {
+    font-size: 18px;
+}
+
+.game p,
+.more-info p {
+    font-size: 14px;
+    font-weight: 100;
+    line-height: 1.5;
+    margin: 10px auto 25px;
+}
+
+/**** TECHNOLOGY ****/
+#technology {
+    background-color: #f0eeed;
+    text-align: center;
+}
+.more-info {
+    display: inline-block;
+    vertical-align: top;
+    width: 400px;
+    margin-right: 50px;
+}
+.more-info:last-child {margin-right: 0;}
+
+.more-info figure {
+    /*overflow: hidden;
+    height: 200px;*/
+    display: block;
+    margin-bottom: 30px;
+}
+.more-info img {width: 400px;}
+
+/**** ABOUT ****/
+#about {
+    text-align: center;
+}
+
+.text {
+    width: 450px;
+    float: left;
+    text-align: left;
+}
+
+#about img {
+    float: right;
+    width: 500px;
+    margin-left: 40px;
+}
+
+#about h2 {
+    margin-bottom: 20px;
+    font-weight: 700;
+    font-size: 2.5rem;
+}
+
+#about p {
+    font-weight: 300;
+    font-size: 1.25rem;
+    line-height: 1.5;
+}
+
+/**** BUTTONS ****/
+.btn {
+    display: inline-block;
+    padding: 10px 20px;
+    border-radius: 3px;
+    border: 3px solid;
+    color: rgba(0, 0, 0, 0.8);
+    text-decoration: none;
+}
+
+.btn:hover {
+    background-color: #000;
+    border-color: #000;
+    color: #fff;
+}
+
+/**** FOOTER ****/
+footer {
+    padding: 20px;
+    clear: both;
+    font-size: 14px;
+    font-weight: 700;
+    border-top: 1px solid #000; /* Progressive enhancement */
+    border-top: 1px solid rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
