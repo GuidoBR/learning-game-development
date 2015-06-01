@@ -70,7 +70,7 @@ header a {
 .highlight {
     box-shadow: inset 0 -10px 15px rgba(0, 0, 0, 0.2); /* CSS 3 :) */
     padding: 190px 0 150px;
-    background: url("../img/bridge.jpeg") fixed no-repeat center -50px;
+    background: url("../img/bridge.jpg") fixed no-repeat center -50px;
     background-size: cover;
     text-align: center;
     color: #000;
