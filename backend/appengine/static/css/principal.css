@@ -9,6 +9,10 @@ body {
     font-family: Roboto, Arial, Tahoma, Sans-serif;
 }
 
+canvas {
+    border: 1px solid #000;
+}
+
 img {
     max-width: 100%;
 }

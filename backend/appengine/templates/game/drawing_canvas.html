@@ -4,7 +4,32 @@
     {% block body %}
     <section class="games">
         <div class="container">
-            <h2>Games and Animations</h2>
+            <h2>Drawing Canvas</h2>
+
+            <canvas id="drawing_canvas" width="300" height="300">
+                Seu browser não tem suporte à canvas. :(
+            </canvas>
+
+            <script>
+            var canvas = document.getElementById('drawing_canvas');
+            var context = canvas.getContext('2d');
+
+            context.beginPath();
+            context.lineWidth = 2;
+
+            context.arc(150, 50, 40, 0, 2 * Math.PI, false);
+
+            context.moveTo(75, 250);
+            context.lineTo(150, 50);
+            context.lineTo(225, 250);
+            context.lineTo(50, 120);
+            context.lineTo(250, 120);
+            context.lineTo(75, 250);
+
+            context.stroke();
+            context.fill();
+            </script>
+
         </div>
     </section>
 
