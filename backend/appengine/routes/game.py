@@ -8,3 +8,8 @@ from gaepermission.decorator import login_not_required
 @no_csrf
 def index():
     return TemplateResponse()
+
+@login_not_required
+@no_csrf
+def drawing_canvas():
+    return TemplateResponse()
