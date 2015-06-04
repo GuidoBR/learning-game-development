@@ -6,11 +6,41 @@
         <div class="container">
             <h2>Images Canvas</h2>
 
-            <canvas id="drawing_canvas" width="300" height="300">
+            <canvas id="images_canvas" width="670" height="235">
                 Seu browser não tem suporte à canvas. :(
             </canvas>
 
             <script>
+            var canvas = document.getElementById('images_canvas');
+            var context = canvas.getContext('2d');
+
+            var stryker = new Image();
+            stryker.src = '../static/img/mk3-stryker.png';
+
+            var subzero = new Image();
+            subzero.src = '../static/img/mk3-subzero.png';
+
+            var fundo = new Image();
+            fundo.src = '../static/img/mk3-background.png';
+            fundo.onload = function() {
+                context.drawImage(
+                    fundo,
+                    50, 205, 770, 445, // Clipping
+                    0, 0, 770, 445 // Desenho do Canvas
+                );
+                context.drawImage(
+                    stryker,
+                    70, 10, 40, 105,
+                    20, 100, 40, 105
+                );
+
+                context.drawImage(
+                    subzero,
+                    70, 10, 40, 105,
+                    80, 100, 40, 105
+                );
+            }
+
             </script>
         </div>
     </section>
