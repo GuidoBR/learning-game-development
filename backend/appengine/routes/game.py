@@ -13,3 +13,8 @@ def index():
 @no_csrf
 def drawing_canvas():
     return TemplateResponse()
+
+@login_not_required
+@no_csrf
+def canvas_images():
+    return TemplateResponse()
