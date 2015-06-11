@@ -18,3 +18,8 @@ def drawing_canvas():
 @no_csrf
 def canvas_images():
     return TemplateResponse()
+
+@login_not_required
+@no_csrf
+def ball_game():
+    return TemplateResponse()

@@ -1,0 +1,129 @@
+{% extends 'base/base.html' %}
+    {% block css %}
+    {% endblock %}
+    {% block body %}
+    <section class="games">
+        <div class="container">
+            <h2>Ball Game</h2>
+
+            <canvas id="ball_game" width="300" height="300">
+                Seu browser não tem suporte à canvas. :(
+            </canvas>
+
+            <script>
+            // Classe Animação
+            function Animacao(context, canvas) {
+                this.context = context;
+                this.canvas = canvas;
+                this.sprites = [];
+                this.ligado = false;
+            }
+
+            Animacao.prototype = {
+                novoSprite: function(sprite) {
+                    this.sprites.push(sprite);
+                },
+                ligar: function() {
+                    this.ligado = true;
+                    this.proximoFrame();
+                },
+                desligar: function() {
+                    this.ligado = false;
+                },
+                proximoFrame: function() {
+                    if (! this.ligado) return;
+ 
+                    this.limparTela();
+
+                    for (var i in this.sprites)
+                        this.sprites[i].atualizar();
+
+                    for (var i in this.sprites)
+                        this.sprites[i].desenhar();
+
+                    var animacao = this;
+                    requestAnimationFrame(function() {
+                        animacao.proximoFrame();
+                     });
+                },
+                limparTela: function() {
+                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+            }
+            </script>
+
+            <script>
+            function Bola(context) {
+                this.context = context;
+                this.x = 0;
+                this.y = 0;
+                this.velocidadeX = 0;
+                this.velocidadeY = 0;
+                this.cor = 'black';
+                this.raio = 10;
+            }
+            Bola.prototype = {
+                atualizar: function() {
+                   var ctx = this.context;
+                   if (this.x < this.raio || this.x > ctx.canvas.width - this.raio)
+                       this.velocidadeX *= -1 
+                   if (this.y < this.raio || this.y > ctx.canvas.width - this.raio)
+                       this.velocidadeY *= -1 
+
+                    this.x += this.velocidadeX;
+                    this.y += this.velocidadeY;
+                },
+                desenhar: function() {
+                    var ctx = this.context;
+                    ctx.save();
+                    ctx.fillStyle = this.cor;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.raio, 0, 2 * Math.PI, false);
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+            </script>
+
+            <script>
+            var canvas = document.getElementById('ball_game');
+            var context = canvas.getContext('2d');
+
+            var bola1 = new Bola(context);
+            bola1.x = 100;
+            bola1.y = 200;
+            bola1.velocidadeX = 8;
+            bola1.velocidadeY = -3;
+            bola1.cor = 'red';
+            bola1.raio = 20;
+
+            var bola2 = new Bola(context);
+            bola2.x = 30;
+            bola2.y = 50;
+            bola2.velocidadeX = 10;
+            bola2.velocidadeY = -5;
+            bola2.cor = 'blue';
+            bola2.raio = 10;
+
+            var bola3 = new Bola(context);
+            bola3.x = 60;
+            bola3.y = 90;
+            bola3.velocidadeX = 3;
+            bola3.velocidadeY = -1;
+            bola3.cor = 'green';
+            bola3.raio = 40;
+
+
+
+            var animacao = new Animacao(context, canvas);
+            animacao.novoSprite(bola1);
+            animacao.novoSprite(bola2);
+            animacao.novoSprite(bola3);
+
+            animacao.ligar();
+            </script>
+
+        </div>
+    </section>
+
+    {% endblock %}
