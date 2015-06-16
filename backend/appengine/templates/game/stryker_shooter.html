@@ -1,0 +1,113 @@
+{% extends 'base/base.html' %}
+    {% block css %}
+    {% endblock %}
+    {% block body %}
+    <section class="games">
+        <div class="container">
+            <h2>Ball Game</h2>
+
+            <canvas id="ball_game" width="300" height="300">
+                Seu browser não tem suporte à canvas. :(
+            </canvas>
+
+            <script>
+            // Classe Animação
+            function Animacao(context, canvas) {
+                this.context = context;
+                this.canvas = canvas;
+                this.sprites = [];
+                this.ligado = false;
+            }
+
+            Animacao.prototype = {
+                novoSprite: function(sprite) {
+                    this.sprites.push(sprite);
+                },
+                ligar: function() {
+                    this.ligado = true;
+                    this.proximoFrame();
+                },
+                desligar: function() {
+                    this.ligado = false;
+                },
+                proximoFrame: function() {
+                    if (! this.ligado) return;
+ 
+                    this.limparTela();
+
+                    for (var i in this.sprites)
+                        this.sprites[i].atualizar();
+
+                    for (var i in this.sprites)
+                        this.sprites[i].desenhar();
+
+                    var animacao = this;
+                    requestAnimationFrame(function() {
+                        animacao.proximoFrame();
+                     });
+                },
+                limparTela: function() {
+                    this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+                }
+            }
+            </script>
+
+            <script>
+            function Ator(context) {
+                this.context = context;
+                this.x = 0;
+                this.y = 0;
+                this.velocidadeX = 0;
+                this.velocidadeY = 0;
+                this.tamanhoX = 10;
+            }
+            Ator.prototype = {
+                atualizar: function() {
+                    // TODO Mudar esse algoritmo para escutar o teclado.
+                   var ctx = this.context;
+                   if (this.x < this.tamanhoX || this.x > ctx.canvas.width - this.tamanhoX)
+                       this.velocidadeX *= -1 
+                   if (this.y < this.tamanhoY || this.y > ctx.canvas.width - this.tamanhoY)
+                       this.velocidadeY *= -1 
+
+                    this.x += this.velocidadeX;
+                    this.y += this.velocidadeY;
+                },
+                desenhar: function() {
+                    var ctx = this.context;
+                    ctx.save();
+                    ctx.fillStyle = this.cor;
+                    ctx.beginPath();
+                    // TODO Colocar a imagem aqui.
+                    ctx.arc(this.x, this.y, this.tamanhoX, 0, 2 * Math.PI, false);
+                    ctx.fill();
+                    ctx.restore();
+                }
+            }
+            </script>
+
+            <script>
+            var canvas = document.getElementById('ball_game');
+            var context = canvas.getContext('2d');
+
+            var stryker = new Ator(context);
+            stryker.x = 100;
+            stryker.y = 200;
+            stryker.velocidadeX = 8;
+            stryker.velocidadeY = -3;
+            stryker.tamanhoX = 20;
+            stryker.tamanhoY = 20;
+            stryker.img = '../static/img/mk3-stryker.png';
+            var stryker = new Image();
+
+
+            var animacao = new Animacao(context, canvas);
+            animacao.novoSprite(stryker);
+
+            animacao.ligar();
+            </script>
+
+        </div>
+    </section>
+
+    {% endblock %}

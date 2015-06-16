@@ -23,3 +23,9 @@ def canvas_images():
 @no_csrf
 def ball_game():
     return TemplateResponse()
+
+@login_not_required
+@no_csrf
+def stryker_shooter():
+    return TemplateResponse()
+
